@@ -8,6 +8,10 @@ const { VueLoaderPlugin } = require("vue-loader");
 module.exports = {
   resolve: {
     extensions: [".js", ".vue"],
+    alias: {
+      "~": path.resolve(__dirname, "src"),
+      assets: path.resolve(__dirname, "src/assets"),
+    },
   },
 
   //parcel index.html 과 같이 parcel main.js 가 진입점 기준이 된다.
@@ -41,6 +45,10 @@ module.exports = {
       {
         test: /\.js$/,
         use: ["babel-loader"],
+      },
+      {
+        test: /\.(png|jpe?g|gif|webp)$/,
+        use: "file-loader",
       },
     ],
   },
